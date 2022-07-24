@@ -29,10 +29,12 @@ public class Test3 {
         //Desired capability
         //hangi cihaz hangi uygulamaya bağlanıcak
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("appium:udid","device.udid");
-        capabilities.setCapability("appium:version","device.version");
-        capabilities.setCapability("appium:deviceName","device.deviceName");
-        capabilities.setCapability("appium:appActivity","app.appActivity");
+        capabilities.setCapability("appium:udid",device.udid);
+        capabilities.setCapability("appium:version",device.version);
+        capabilities.setCapability("appium:deviceName",device.deviceName);
+
+        capabilities.setCapability("appium:appPackage",app.appPackage);
+        capabilities.setCapability("appium:appActivity",app.appActivity);
 
         // RemoteWebDriver -> WebDriver -> AppiumDriver --> (AndroidDriver, iOSDriver)
 

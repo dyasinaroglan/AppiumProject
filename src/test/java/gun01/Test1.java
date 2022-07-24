@@ -13,7 +13,7 @@ import java.net.URL;
 public class Test1 {
 
     @Test
-    public void test1() throws MalformedURLException {
+    public void test1() throws MalformedURLException, InterruptedException {
 
         //Desired Capability
         //Hangi cihaz ve hangi uygulamaya bağlanılacak
@@ -34,8 +34,8 @@ public class Test1 {
 
         driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 
-        driver.findElement(By.xpath("//android.widget.TextView[@Content-desc='Accessibility']")).click();
-
+        driver.findElement(By.xpath("//android.widget.TextView[@content-desc=\"Accessibility\"]")).click();
+        Thread.sleep(1000);
         driver.closeApp();
 
     }

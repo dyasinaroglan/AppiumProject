@@ -11,6 +11,14 @@ import org.testng.annotations.Test;
 
 public class Test2 {
 
+    /*
+    Appium'u açmadığımızda veya unuttuğumuzda Appium'u java ile çalıştırmak için AppiumDriverLocalService'ı kullanıyoruz.
+    Service'ı start ediyoruz
+    Capabilities'ı oluşturuyoruz
+    driver'ı oluşturuyoruz ve driver'ımızı AppiumDriverLocalService'ı kullanarak bağlıyoruz
+    ve service'ın getUrl adresini kullanarak driver'ın bağlantısını sağlıyoruz.
+    en son service'ın stop edilmesini istiyoruz.
+     */
     AppiumDriverLocalService service;
 
     @Test
@@ -39,7 +47,7 @@ public class Test2 {
 
         driver = new AndroidDriver<>(service.getUrl(),capabilities);
 
-        driver.findElement(By.xpath("//android.widget.TextView[@content-desc='Accessibility']")).click();
+        driver.findElement(By.xpath("//android.widget.TextView[@content-desc=\"Accessibility\"]")).click();
 
         driver.closeApp();
         service.stop();
