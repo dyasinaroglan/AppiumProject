@@ -1,4 +1,4 @@
-package tests;
+package gun01;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
