@@ -1,15 +1,55 @@
 package gun02;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
-import utils.DriverSelenium;
+import utils.*;
+import static utils.Utils.openApp;
 
 public class Test1 {
 
+    AppiumDriver<?> driver;
+    WebDriverWait wait;
+
     @Test
-    public void test1() {
+    public void runAppiumTest() {
 
-        DriverSelenium.getDriver().get("https://www.google.com");
-        DriverSelenium.quitDriver();
+        Driver.runAppium();
 
+        Driver.stopAppium();
+
+    }
+    @Test
+    public void testGetDriver(){
+        Driver.runAppium();
+
+        AppiumDriver<MobileElement> driver;
+        driver = Driver.getDriver(Device.PIXEL2, App.APIDEMO);
+
+        driver.findElement(By.xpath("//android.widget.TextView[@content-desc='Accessibility']")).click();
+
+        driver.closeApp();
+
+
+        Driver.stopAppium();
+    }
+    @Test
+    public void openAppTest(){
+
+        By accecibility = By.xpath("//android.widget.TextView[@content-desc='Accessibility']");
+        By customView = By.xpath("//android.widget.TextView[@content-desc=\"Custom View\"]");
+
+        driver = openApp(Device.PIXEL2, App.APIDEMO);
+
+        wait = new WebDriverWait(driver, 10);
+
+        wait.until(ExpectedConditions.elementToBeClickable(accecibility)).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(customView)).click();
+        driver.navigate().back();
+        driver.closeApp();
+        Driver.stopAppium();
     }
 }

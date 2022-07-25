@@ -26,8 +26,6 @@ public class Test3 {
                 .usingAnyFreePort().build();
         service.start();
 
-        //Desired capability
-        //hangi cihaz hangi uygulamaya bağlanıcak
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("appium:udid",device.udid);
         capabilities.setCapability("appium:version",device.version);
@@ -39,7 +37,7 @@ public class Test3 {
         // RemoteWebDriver -> WebDriver -> AppiumDriver --> (AndroidDriver, iOSDriver)
 
         AppiumDriver<MobileElement> driver;
-        driver = new AndroidDriver<>(service.getUrl(),capabilities);
+        driver = new AndroidDriver<>(service.getUrl (),capabilities);
 
         driver.findElement(By.xpath("//android.widget.TextView[@content-desc='Accessibility']")).click();
 
