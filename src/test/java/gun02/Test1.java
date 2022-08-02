@@ -27,7 +27,7 @@ public class Test1 {
         Driver.runAppium();
 
         AppiumDriver<MobileElement> driver;
-        driver = Driver.getDriver(Device.PIXEL2, App.APIDEMO);
+        driver = Driver.getDriver(Device.PIXEL2, App.APIAPP);
 
         driver.findElement(By.xpath("//android.widget.TextView[@content-desc='Accessibility']")).click();
 
@@ -42,7 +42,7 @@ public class Test1 {
         By accecibility = By.xpath("//android.widget.TextView[@content-desc='Accessibility']");
         By customView = By.xpath("//android.widget.TextView[@content-desc=\"Custom View\"]");
 
-        driver = openApp(Device.PIXEL2, App.APIDEMO);
+        driver = openApp(Device.PIXEL2, App.APIAPP);
 
         wait = new WebDriverWait(driver, 10);
 

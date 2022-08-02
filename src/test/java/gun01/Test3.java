@@ -15,8 +15,8 @@ public class Test3 {
 
     AppiumDriverLocalService service;
 
-    Device device = Device.PIXEL2;
-    App app = App.APIDEMO;
+    Device device = Device.MyEmulatör;
+    App app = App.APIAPP;
 
     @Test
     public void test3(){

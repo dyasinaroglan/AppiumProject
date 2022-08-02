@@ -1,7 +1,6 @@
 package gun02;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -24,7 +23,7 @@ public class Test2 {
 
     @BeforeTest
     public void beforeTest() {
-        driver = openApp(Device.PIXEL2, App.APIDEMO);
+        driver = openApp(Device.PIXEL2, App.APIAPP);
         wait = new WebDriverWait(driver, 20);
     }
     @Test

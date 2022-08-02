@@ -2,10 +2,11 @@ package utils;
 
 public enum Device {
 
-    PIXEL2("emulator-5554",
+    MyEmulatör("emulator-5554",
             "11",
             "Pixel2",
             "Android");
+
 
 
     public String udid;
