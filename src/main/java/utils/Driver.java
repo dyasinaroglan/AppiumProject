@@ -35,6 +35,7 @@ public class Driver {
 
         capabilities.setCapability("appium:appPackage",app.appPackage);
         capabilities.setCapability("appium:appActivity",app.appActivity);
+
         return capabilities;
 
         /*
