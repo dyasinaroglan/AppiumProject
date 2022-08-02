@@ -23,7 +23,7 @@ public class Test2 {
 
     @BeforeTest
     public void beforeTest() {
-        driver = openApp(Device.PIXEL2, App.APIAPP);
+        driver = openApp(Device.MyEmulatör, App.APIAPP);
         wait = new WebDriverWait(driver, 20);
     }
     @Test

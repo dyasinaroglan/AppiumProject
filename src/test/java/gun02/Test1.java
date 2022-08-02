@@ -11,7 +11,7 @@ import static utils.Utils.openApp;
 
 public class Test1 {
 
-    AppiumDriver<?> driver;
+    AppiumDriver<?> driver;  //MobileElement yerine soru işareti koyabiliriz.
     WebDriverWait wait;
 
     @Test
@@ -26,13 +26,11 @@ public class Test1 {
     public void testGetDriver(){
         Driver.runAppium();
 
-        AppiumDriver<MobileElement> driver;
-        driver = Driver.getDriver(Device.PIXEL2, App.APIAPP);
+        driver = Driver.getDriver(Device.MyEmulatör, App.APIAPP);
 
         driver.findElement(By.xpath("//android.widget.TextView[@content-desc='Accessibility']")).click();
 
         driver.closeApp();
-
 
         Driver.stopAppium();
     }
@@ -42,7 +40,7 @@ public class Test1 {
         By accecibility = By.xpath("//android.widget.TextView[@content-desc='Accessibility']");
         By customView = By.xpath("//android.widget.TextView[@content-desc=\"Custom View\"]");
 
-        driver = openApp(Device.PIXEL2, App.APIAPP);
+        driver = openApp(Device.MyEmulatör, App.APIAPP);
 
         wait = new WebDriverWait(driver, 10);
 
