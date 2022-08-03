@@ -34,7 +34,6 @@ public class RunnerCalculator extends AbstractTestNGCucumberTests {
     @BeforeTest
     @Parameters({"device"})
     public void beforeTest(@Optional("") String device) {
-        Device.
         if (device.length() == 0)
             openApp(Device.HUAWEI, App.CALCULATOR);
         else
