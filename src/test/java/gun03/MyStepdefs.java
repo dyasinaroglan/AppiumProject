@@ -8,8 +8,10 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import utils.App;
 import utils.Device;
+import utils.Driver;
 
 import java.util.List;
 
@@ -17,35 +19,45 @@ import static utils.Utils.openApp;
 
 public class MyStepdefs {
 
-    AppiumDriver<?> driver;
+    AppiumDriver<?> driver = Driver.getDriver();
     WebDriverWait wait;
     By lButtonAdd = By.id("calc_keypad_btn_add");
+    By lButtonEqual = By.id("com.android.calculator2:id/eq");
     By lScreen = By.id("calc_screen");
 
     @Given("user on start page")
     public void userOnStartPage() {
-        driver = openApp(Device.PIXEL2, App.APIAPP);
+        //driver = openApp(Device.MyEmulatör, App.APIAPP);
+        //wait = new WebDriverWait(driver,20);
+        driver.resetApp();  //uygulamayı kapatıp tekrar başlatıyor.
     }
 
     @When("user sum the following numbers")
     public void userSumTheFollowingNumbers(DataTable table) {
+
         List<Integer> list = table.asList(Integer.class);
+
+        int max = list.size();
+        int i = 1;
+
         for (Integer num : list) {
-            clickNum(num);
-            
+            click(num);
+            if(i++ != max)  //önce işlem yapar yani eşit mi değil mi? sonra arttırma yapar.
+            click(lButtonAdd);
         }
+        click(lButtonEqual);
     }
 
     @Then("the result should be {int}")
     public void theResultShouldBe(int result) {
-        System.out.println(driver.findElement(By.id("calc_edt_formula")).getText());
+        Assert.assertTrue(driver.findElement(lScreen).getText().contains(result+""));
     }
     public void click(By locator){
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
-    public void clickNum(int num){
+    public void click(int num){
         if(num>=0 && num<=9) {
-            driver.findElement(By.xpath("//android.widget.Button[@content-desc='" + num + "']")).click();
+            click(By.xpath("//android.widget.Button[@content-desc='" + num + "']"));
         }
     }
 }

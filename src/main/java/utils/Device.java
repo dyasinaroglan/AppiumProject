@@ -5,9 +5,9 @@ public enum Device {
     MyEmulatör("emulator-5554",
             "11",
             "Pixel2",
-            "Android");
+            "Android"),
 
-
+    HUAWEI("L2N4C19923015627","11","P30 lite","Android");
 
     public String udid;
     public String version;

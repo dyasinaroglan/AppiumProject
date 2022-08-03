@@ -2,8 +2,8 @@ package utils;
 
 public enum App {
 
-    APIAPP("io.appium.android.apis","io.appium.android.apis.ApiDemos");
-
+    APIAPP("io.appium.android.apis","ApiDemos"),
+    CALCULATOR("com.sec.android.app.popupcalculator","calculator");
 
     public String appPackage;
     public String appActivity;

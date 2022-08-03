@@ -46,4 +46,7 @@ public class Driver {
            java-client8 ile beraber daha çok methot Android ve İOS driverlarında var.
          */
     }
+    public static AppiumDriver<?> getDriver(){
+        return driver;
+    }
 }
