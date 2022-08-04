@@ -2,7 +2,6 @@ package gun03;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import utils.App;
@@ -29,9 +28,10 @@ import static utils.Utils.openApp;
 
            */
 
-public class RunnerCalculator extends AbstractTestNGCucumberTests {
-
-    @BeforeTest
+public class RunnerCalculator extends AbstractTestNGCucumberTests {   //runner testNG için. TestNG ise cucumberı çalıştırıyor.
+         //runner ne demek ? üstteki gherkin dillerini çalıştır diyoruz. runner'ın çalışması için ilk önce alttakşleri çalıştırması lazım
+    //yani testNG nin gündeme gelmesi lazım. çünkü gherkini tetikleyen testNG. Öncelikle testNG çalışacak sonra testNG cucumber'ı çalıştaracak
+    //o yüzden runner da testNG öncelikli çalışır.
     @Parameters({"device"})
     public void beforeTest(@Optional("") String device) {
         if (Arrays.toString(Device.values()).contains(device)) //EĞER device dan farklı bir cihaz yazılmışsa, tanımlanmayan bir cihazsa

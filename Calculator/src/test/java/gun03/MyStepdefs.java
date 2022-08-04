@@ -6,16 +6,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import utils.App;
-import utils.Device;
 import utils.Driver;
 
 import java.util.List;
-
-import static utils.Utils.openApp;
 
 public class MyStepdefs {
 
@@ -36,6 +33,7 @@ public class MyStepdefs {
         //driver = openApp(Device.MyEmulatör, App.APIAPP);
 
         driver.resetApp();  //uygulamayı kapatıp tekrar başlatıyor.
+        driver.rotate(ScreenOrientation.LANDSCAPE);
     }
 
     @When("user sum the following numbers")
@@ -57,6 +55,7 @@ public class MyStepdefs {
     @Then("the result should be {int}")
     public void theResultShouldBe(int result) {
         Assert.assertTrue(driver.findElement(lScreen).getText().contains(result + ""));
+        driver.rotate(ScreenOrientation.PORTRAIT);
     }
 
     public void click(By locator) {

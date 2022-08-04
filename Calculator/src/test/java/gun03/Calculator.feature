@@ -9,3 +9,4 @@ Feature: Calculator
     |4|
     |5|
     Then the result should be 15
+
