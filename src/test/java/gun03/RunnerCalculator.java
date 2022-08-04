@@ -8,6 +8,8 @@ import org.testng.annotations.Parameters;
 import utils.App;
 import utils.Device;
 
+import java.util.Arrays;
+
 import static utils.Utils.openApp;
 
 @CucumberOptions(
@@ -16,7 +18,6 @@ import static utils.Utils.openApp;
         tags = "@Sum"
 
 )
-
          /*
          bu neden sadece gun03 den alıyor? çünkü ben feature dosyalarını herhangi bir yere yazabilirim
 
@@ -28,15 +29,14 @@ import static utils.Utils.openApp;
 
            */
 
-
 public class RunnerCalculator extends AbstractTestNGCucumberTests {
 
     @BeforeTest
     @Parameters({"device"})
     public void beforeTest(@Optional("") String device) {
-        if (device.length() == 0)
-            openApp(Device.HUAWEI, App.CALCULATOR);
+        if (Arrays.toString(Device.values()).contains(device)) //EĞER device dan farklı bir cihaz yazılmışsa, tanımlanmayan bir cihazsa
+            openApp(Device.valueOf(device),App.CALCULATOR);
         else
-            openApp(Device.valueOf(device), App.CALCULATOR);
+            openApp(Device.HUAWEI, App.CALCULATOR);
     }
 }

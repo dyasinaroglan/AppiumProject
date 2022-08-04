@@ -19,8 +19,14 @@ import static utils.Utils.openApp;
 
 public class MyStepdefs {
 
-    AppiumDriver<?> driver = Driver.getDriver();
+    AppiumDriver<?> driver;
     WebDriverWait wait;
+
+    {
+        driver = Driver.getDriver();
+        wait = new WebDriverWait(driver, 20);
+    }
+
     By lButtonAdd = By.id("calc_keypad_btn_add");
     By lButtonEqual = By.id("com.android.calculator2:id/eq");
     By lScreen = By.id("calc_screen");
@@ -28,7 +34,7 @@ public class MyStepdefs {
     @Given("user on start page")
     public void userOnStartPage() {
         //driver = openApp(Device.MyEmulatör, App.APIAPP);
-        //wait = new WebDriverWait(driver,20);
+
         driver.resetApp();  //uygulamayı kapatıp tekrar başlatıyor.
     }
 
@@ -42,21 +48,23 @@ public class MyStepdefs {
 
         for (Integer num : list) {
             click(num);
-            if(i++ != max)  //önce işlem yapar yani eşit mi değil mi? sonra arttırma yapar.
-            click(lButtonAdd);
+            if (i++ != max)  //önce işlem yapar yani eşit mi değil mi? sonra arttırma yapar.
+                click(lButtonAdd);
         }
         click(lButtonEqual);
     }
 
     @Then("the result should be {int}")
     public void theResultShouldBe(int result) {
-        Assert.assertTrue(driver.findElement(lScreen).getText().contains(result+""));
+        Assert.assertTrue(driver.findElement(lScreen).getText().contains(result + ""));
     }
-    public void click(By locator){
+
+    public void click(By locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
-    public void click(int num){
-        if(num>=0 && num<=9) {
+
+    public void click(int num) {
+        if (num >= 0 && num <= 9) {
             click(By.xpath("//android.widget.Button[@content-desc='" + num + "']"));
         }
     }
